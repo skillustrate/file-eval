@@ -33,6 +33,12 @@ You can use this tool in two ways depending on your technical preference:
     # Specify a specific file and custom role
     python scripts/run_evaluator.py sample_inputs/proposal-a-event-driven.md --role "Principal Architect"
 
+    # Include MITRE ATT&CK framework for tracking incidents
+
+    # Include Data privacy framework 
+
+    # Include OSWAP TOP10 
+
     # Specify custom rounds, role, and evaluation criteria
     python scripts/run_evaluator.py sample_inputs/*.md --rounds 3 --role "Chief Architect" --criteria "Zero-Trust, Sub-50ms Latency, SOC2"
     ```
