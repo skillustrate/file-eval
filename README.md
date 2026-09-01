@@ -32,6 +32,9 @@ You can use this tool in two ways depending on your technical preference:
 
     # Specify a specific file and custom role
     python scripts/run_evaluator.py sample_inputs/proposal-a-event-driven.md --role "Principal Architect"
+
+    # Specify custom rounds, role, and evaluation criteria
+    python scripts/run_evaluator.py sample_inputs/*.md --rounds 3 --role "Chief Architect" --criteria "Zero-Trust, Sub-50ms Latency, SOC2"
     ```
 3.  **Pro Tip (Optional - Direct Pipe to LLM or Clipboard):**
     You can pipe the prompt directly to an LLM CLI tool (like [`llm`](https://github.com/simonw/llm), installable via `pip install llm`) to evaluate immediately in your terminal, or copy it directly to your clipboard:
@@ -42,6 +45,30 @@ You can use this tool in two ways depending on your technical preference:
     # Option B: Copy prompt directly to clipboard to paste into web chat (Windows)
     python scripts/run_evaluator.py sample_inputs/*.md | clip
     ```
+
+---
+
+## ⚙️ Command Fields & Parameters Explained
+
+When using the `/file-eval` command or configuring custom prompts, you can pass up to three optional arguments:
+
+```bash
+/file-eval [repetitions] [target_role] [evaluation_criteria]
+```
+
+| Field / Parameter | Purpose | Default Value | Example Values |
+| :--- | :--- | :--- | :--- |
+| **`repetitions`** | Number of adversarial grilling and defense cycles to run before finalizing the document. | `2` | `2`, `3`, `5` |
+| **`target_role`** | The domain expert persona defending the design (Hat 1). | `"Lead Systems Architect"` | `"Principal Cloud Architect"`, `"Chief Security Officer"`, `"FinOps Lead"` |
+| **`evaluation_criteria`** | Specific focus areas, non-negotiable constraints, compliance standards, or performance targets. | Standard 5-Pillar Rubric | `"Zero-Trust, Sub-50ms Latency, SOC2, FinOps under $5k/mo"` |
+
+### 💡 Suggested Inputs for `evaluation_criteria`
+
+* ⚡ **Performance & Scale:** `"Sub-50ms latency, 100k concurrent users, horizontal auto-scaling, high throughput"`
+* 🔒 **Security & Compliance:** `"Zero-Trust, HIPAA/SOC2 compliance, end-to-end encryption, strict RBAC"`
+* 💰 **FinOps & Cost-Optimization:** `"Cloud budget under $5,000/month, serverless pay-per-use, minimal egress fees"`
+* 🛡️ **High Availability & SRE:** `"99.99% uptime, Multi-Region disaster recovery, RPO < 1min, zero-downtime deployments"`
+* 🚀 **Developer Simplicity:** `"Low operational complexity, fast onboarding, minimal microservice sprawl"`
 
 ---
 
