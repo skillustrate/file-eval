@@ -33,9 +33,14 @@ You can use this tool in two ways depending on your technical preference:
     # Specify a specific file and custom role
     python scripts/run_evaluator.py sample_inputs/proposal-a-event-driven.md --role "Principal Architect"
     ```
-3.  **Pro Tip:** You can "pipe" the output directly to an LLM CLI tool (like `llm`) to run the evaluation automatically:
+3.  **Pro Tip (Optional - Direct Pipe to LLM or Clipboard):**
+    You can pipe the prompt directly to an LLM CLI tool (like [`llm`](https://github.com/simonw/llm), installable via `pip install llm`) to evaluate immediately in your terminal, or copy it directly to your clipboard:
     ```bash
+    # Option A: Run directly in terminal via llm CLI (requires: pip install llm)
     python scripts/run_evaluator.py sample_inputs/*.md | llm
+
+    # Option B: Copy prompt directly to clipboard to paste into web chat (Windows)
+    python scripts/run_evaluator.py sample_inputs/*.md | clip
     ```
 
 ---
