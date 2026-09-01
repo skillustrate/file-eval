@@ -21,8 +21,8 @@ You can use this tool in two ways depending on your technical preference:
 
 1.  **Clone the repo:**
     ```bash
-    git clone https://github.com/your-username/skill-search.git
-    cd skill-search
+    git clone https://github.com/Nesmarkib/skillustrate.git
+    cd skillustrate
     ```
 2.  **Run the evaluator script:**
     Use the Python script to automatically package your files into a perfect prompt.
@@ -71,7 +71,7 @@ To save costs and reduce "AI chatter," this suite uses:
 ## 📁 Folder Structure
 
 ```
-skill-search/
+skillustrate/
 ├── README.md
 ├── USAGE_ACROSS_ALL_LLMS.md
 ├── STANDALONE_PROMPT.md
