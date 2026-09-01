@@ -1,0 +1,90 @@
+{
+  "test_cases": [
+    {
+      "name": "default_unspecified_repetitions_eval",
+      "prompt": "/file-eval",
+      "assertions": [
+        {
+          "type": "contains_match",
+          "pattern": "Executive Synthesis & Comparative Matrix"
+        },
+        {
+          "type": "contains_match",
+          "pattern": "Adversarial Red-Teamer"
+        },
+        {
+          "type": "contains_match",
+          "pattern": "Security & Compliance Auditor"
+        },
+        {
+          "type": "contains_match",
+          "pattern": "FinOps & Cost Engineer"
+        },
+        {
+          "type": "contains_match",
+          "pattern": "Production & Ops Realist"
+        },
+        {
+          "type": "contains_match",
+          "pattern": "Chief Arbiter"
+        },
+        {
+          "type": "contains_match",
+          "pattern": "The Definitive Best-of-Breed Document"
+        },
+        {
+          "type": "contains_match",
+          "pattern": "Expert Evaluator Final Verdict"
+        }
+      ]
+    },
+    {
+      "name": "custom_repetitions_and_role_eval",
+      "prompt": "/file-eval \"3\" \"Principal Enterprise Architect\" \"Zero Trust, FinOps, Latency\"",
+      "assertions": [
+        {
+          "type": "contains_match",
+          "pattern": "Principal Enterprise Architect"
+        },
+        {
+          "type": "contains_match",
+          "pattern": "ROUND 3"
+        },
+        {
+          "type": "contains_match",
+          "pattern": "Security & Compliance"
+        },
+        {
+          "type": "contains_match",
+          "pattern": "FinOps & Cost Efficiency"
+        },
+        {
+          "type": "contains_match",
+          "pattern": "The Definitive Best-of-Breed Document"
+        }
+      ]
+    },
+    {
+      "name": "structured_5_pillar_scoring_eval",
+      "prompt": "/file-eval \"2\"",
+      "assertions": [
+        {
+          "type": "regex_match",
+          "pattern": "(?i)Architecture & Soundness"
+        },
+        {
+          "type": "regex_match",
+          "pattern": "(?i)Security & Compliance"
+        },
+        {
+          "type": "regex_match",
+          "pattern": "(?i)FinOps & Cost Efficiency"
+        },
+        {
+          "type": "contains_match",
+          "pattern": "The Definitive Best-of-Breed Document"
+        }
+      ]
+    }
+  ]
+}
