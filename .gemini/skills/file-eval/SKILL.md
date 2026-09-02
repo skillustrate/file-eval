@@ -1,6 +1,6 @@
 ---
 name: file-eval
-description: Token-optimized multi-file markdown evaluator with 6 specialized hats (Security Auditor, FinOps, Red-Teamer, Ops Realist, Champion, Arbiter). Uses delta-patching and iterative grilling to output the best-of-breed document and saves it directly to a final .md file.
+description: Token-optimized multi-file markdown evaluator with 6 specialized hats (Security Auditor, FinOps, Red-Teamer, Ops Realist, Champion, Arbiter). Synthesizes competing technical proposals, system architectures, or RFCs through adversarial grilling into a single best-of-breed document.
 argument-hint: "[repetitions] [target_role] [evaluation_criteria]"
 arguments:
   - repetitions
@@ -18,7 +18,7 @@ allowed-tools:
 
 ```!
 # Efficient file discovery - limits scan to candidate inputs
-FOUND_FILES=$(find . -maxdepth 3 -name "*.md" ! -name "SKILL.md" ! -name "README.md" ! -name "evals.json" ! -name "STANDALONE_PROMPT.md" ! -name "USAGE_ACROSS_ALL_LLMS.md" ! -name "final-synthesized-*.md" | head -n 5)
+FOUND_FILES=$(find . -maxdepth 3 -name "*.md" ! -name "SKILL.md" ! -name "README.md" ! -name "READMEnew.md" ! -name "evals.json" ! -name "STANDALONE_PROMPT.md" ! -name "USAGE_ACROSS_ALL_LLMS.md" ! -name "final-synthesized-*.md" | head -n 5)
 
 if [ -z "$FOUND_FILES" ]; then
   FOUND_FILES=$(find . -maxdepth 1 -name "*.md" | head -n 3)
