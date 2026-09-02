@@ -44,7 +44,7 @@ PROMPT_TEMPLATE = """You are an advanced evaluation engine designed to inspect m
 3. 🎩 **The Security & Compliance Auditor (Hat 3 - Cyber & Zero-Trust)**: 1-2 sharp attack vectors on auth, encryption, and compliance.
 4. 🎩 **The FinOps & Cost Engineer (Hat 4 - Economics & ROI)**: 1-2 sharp attack vectors on cloud spend, egress, and waste.
 5. 🎩 **The Production & Ops Realist (Hat 5 - SRE & Observability)**: 1-2 sharp attack vectors on telemetry, MTTR, and deploy fragility.
-6. 🎩 **The Chief Arbiter (Hat 6 - Expert Evaluator)**: Balanced 5-pillar 100-pt rubric scorecard.
+6. 🎩 **The Chief Arbiter (Hat 6 - Expert Evaluator)**: Scores these 5 fixed pillars (/20 each): Architecture & Soundness, Security & Compliance, FinOps & Cost Efficiency, Production & Ops Readiness, Completeness & Polish.
 
 ---
 
@@ -87,7 +87,7 @@ def main():
     parser.add_argument("files", nargs="*", help="Markdown files or glob patterns to evaluate (e.g. sample_inputs/*.md)")
     parser.add_argument("--rounds", "-r", type=int, default=2, help="Number of grilling iterations (default: 2)")
     parser.add_argument("--role", default="Lead Systems Architect", help="Target domain role")
-    parser.add_argument("--criteria", default="Architecture, Security, FinOps, SRE Reliability, Completeness", help="Evaluation criteria")
+    parser.add_argument("--criteria", default="Architecture & Soundness, Security & Compliance, FinOps & Cost Efficiency, Production & Ops Readiness, Completeness & Polish", help="Evaluation criteria")
     parser.add_argument("--export-prompt", action="store_true", help="Print the fully compiled prompt to stdout without calling an API")
     args = parser.parse_args()
 

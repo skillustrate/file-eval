@@ -1,15 +1,6 @@
 ---
 name: file-eval
 description: Token-optimized multi-file markdown evaluator with 6 specialized hats (Security Auditor, FinOps, Red-Teamer, Ops Realist, Champion, Arbiter). Uses delta-patching and iterative grilling to output the best-of-breed document and saves it directly to a final .md file.
-argument-hint: "[repetitions] [target_role] [evaluation_criteria]"
-arguments:
-  - repetitions
-  - target_role
-  - evaluation_criteria
-context: fork
-agent: Plan
-allowed-tools:
-  - Bash
 ---
 
 # File Evaluation & Synthesis (6-Hat Enterprise Suite)
@@ -17,20 +8,10 @@ allowed-tools:
 ## Discovered Markdown Documents
 
 ```!
-# Efficient file discovery - limits scan to candidate inputs
-FOUND_FILES=$(find . -maxdepth 3 -name "*.md" ! -name "SKILL.md" ! -name "README.md" ! -name "evals.json" ! -name "STANDALONE_PROMPT.md" ! -name "USAGE_ACROSS_ALL_LLMS.md" ! -name "final-synthesized-*.md" | head -n 5)
-
-if [ -z "$FOUND_FILES" ]; then
-  FOUND_FILES=$(find . -maxdepth 1 -name "*.md" | head -n 3)
-fi
-
-for file in $FOUND_FILES; do
-  echo "=== FILE: $file ==="
-  cat "$file"
-  echo "=== END FILE ==="
-  echo ""
-done
+python3 -c "import os, glob, sys; getattr(sys.stdout, 'reconfigure', lambda **k: None)(encoding='utf-8'); exc={'SKILL.md','README.md','evals.json','STANDALONE_PROMPT.md','USAGE_ACROSS_ALL_LLMS.md','synthesize-designs-project-files-v2.md'}; files=[f for f in glob.glob('./**/*.md', recursive=True) if os.path.basename(f) not in exc and not os.path.basename(f).startswith('final-synthesized-')][:5] or [f for f in glob.glob('./*.md') if os.path.basename(f) not in exc][:3]; [print(f'=== FILE: {f} ===\n' + open(f, 'r', encoding='utf-8', errors='ignore').read() + '\n=== END FILE ===\n') for f in files]" 2>/dev/null || python -c "import os, glob, sys; getattr(sys.stdout, 'reconfigure', lambda **k: None)(encoding='utf-8'); exc={'SKILL.md','README.md','evals.json','STANDALONE_PROMPT.md','USAGE_ACROSS_ALL_LLMS.md','synthesize-designs-project-files-v2.md'}; files=[f for f in glob.glob('./**/*.md', recursive=True) if os.path.basename(f) not in exc and not os.path.basename(f).startswith('final-synthesized-')][:5] or [f for f in glob.glob('./*.md') if os.path.basename(f) not in exc][:3]; [print(f'=== FILE: {f} ===\n' + open(f, 'r', encoding='utf-8', errors='ignore').read() + '\n=== END FILE ===\n') for f in files]"
 ```
+
+> **Note**: If candidate files are not automatically injected above, discover and inspect all candidate `.md` proposal files in the current workspace or `sample_inputs/` using available file tools before proceeding.
 
 ## Objective
 Evaluate candidate `.md` documents through comprehensive multi-hat adversarial grilling—covering technical architecture, cybersecurity, FinOps economics, and production operations—iteratively refining the design via delta patches to produce the definitive best-of-breed document and saving it directly to a final `.md` file.
@@ -58,14 +39,14 @@ Evaluate candidate `.md` documents through comprehensive multi-hat adversarial g
 
 ### Step 1: Ingestion & Fast Comparative Benchmark
 - **Repetitions (`$repetitions`)**: If specified, set `TOTAL_ROUNDS = $repetitions`. If empty/unspecified, note: *"No repetition count specified; defaulting to 2 grilling rounds (pass `/file-eval <N>` to customize)"* and use `TOTAL_ROUNDS = 2`.
-- **Comparative Matrix**: Output a compact table comparing all inputs across Architecture, Security, FinOps, Ops, and Baseline Score (/100).
+- **Comparative Matrix**: Output a compact table comparing all inputs across Architecture & Soundness, Security & Compliance, FinOps & Cost Efficiency, Production & Ops Readiness, and Baseline Score (/100).
 - Select baseline foundation or define the Integrated Draft v0 strategy.
 
 ### Step 2: Multi-Round Grilling Loop (Delta-Patch Workflow)
 For each round `r` from `1` to `TOTAL_ROUNDS`:
 1. **The Grilling (1-2 sharp bullets per hat)**: Hats 2, 3, 4, and 5 each pose targeted attack vectors.
 2. **The Defense & Delta-Patch**: Hat 1 issues architectural resolutions + **Delta Patch** (bulleted spec modifications).
-3. **The Arbiter 100-Point Scorecard**: Hat 6 scores the 5 pillars (/20 each).
+3. **The Arbiter 100-Point Scorecard**: Hat 6 scores these 5 fixed pillars (/20 each) — always use this exact naming, in this order: Architecture & Soundness, Security & Compliance, FinOps & Cost Efficiency, Production & Ops Readiness, Completeness & Polish.
 
 ### Step 3: Final Best-of-Breed Consolidation & File Creation
 1. Compile all accumulated delta patches into the definitive, production-grade output markdown document.

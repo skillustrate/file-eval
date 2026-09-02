@@ -47,8 +47,8 @@
           "pattern": "Principal Enterprise Architect"
         },
         {
-          "type": "contains_match",
-          "pattern": "ROUND 3"
+          "type": "regex_match",
+          "pattern": "(?i)Round 3"
         },
         {
           "type": "contains_match",

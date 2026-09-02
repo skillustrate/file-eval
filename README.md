@@ -120,9 +120,12 @@ skillustrate/
 │   └── proposal-c-serverless-microservices.md
 ├── scripts/
 │   └── run_evaluator.py
-├── .claude/skills/file-eval/
-│   ├── SKILL.md
-│   └── evals/evals.json
+├── .claude/
+│   ├── commands/
+│   │   └── file-eval.md
+│   └── skills/file-eval/
+│       ├── SKILL.md
+│       └── evals/evals.json
 ├── .agents/skills/file-eval/
 │   ├── SKILL.md
 │   └── evals/evals.json
