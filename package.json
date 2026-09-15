@@ -1,0 +1,23 @@
+{
+  "name": "skillustrate",
+  "version": "1.0.0",
+  "description": "Enterprise-grade multi-file evaluation and synthesis skill framework",
+  "main": "scripts/run-evals.js",
+  "scripts": {
+    "validate:skills": "node scripts/validate-skills.js",
+    "validate:commands": "node scripts/validate-commands.js",
+    "eval": "node scripts/run-evals.js",
+    "eval:enforce": "node scripts/run-evals.js --min-rank1 80",
+    "eval:behavioral:dry": "node scripts/run-evals.js --behavioral file-eval --dry-run",
+    "sync": "node scripts/sync-skills.js",
+    "test": "node scripts/validate-skills.js && node scripts/validate-commands.js && node scripts/run-evals.js --min-rank1 80"
+  },
+  "keywords": [
+    "ai-skills",
+    "evals",
+    "markdown-evaluator",
+    "six-hats"
+  ],
+  "author": "Nesmarkib",
+  "license": "MIT"
+}
