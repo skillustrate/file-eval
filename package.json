@@ -9,6 +9,7 @@
     "eval": "node scripts/run-evals.js",
     "eval:enforce": "node scripts/run-evals.js --min-rank1 80",
     "eval:behavioral:dry": "node scripts/run-evals.js --behavioral file-eval --dry-run",
+    "sync": "node scripts/sync-skills.js",
     "test": "node scripts/validate-skills.js && node scripts/validate-commands.js && node scripts/run-evals.js --min-rank1 80"
   },
   "keywords": [

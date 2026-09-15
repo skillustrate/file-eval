@@ -17,11 +17,11 @@ allowed-tools:
 ## Discovered Markdown Documents
 
 ```!
-# Efficient file discovery - limits scan to candidate inputs
-FOUND_FILES=$(find . -maxdepth 3 -name "*.md" ! -name "SKILL.md" ! -name "README.md" ! -name "READMEnew.md" ! -name "evals.json" ! -name "STANDALONE_PROMPT.md" ! -name "USAGE_ACROSS_ALL_LLMS.md" ! -name "final-synthesized-*.md" | head -n 5)
+# Discover candidate input documents dynamically without arbitrary truncation
+FOUND_FILES=$(find . -maxdepth 3 -name "*.md" ! -name "SKILL.md" ! -name "README*.md" ! -name "evals.json" ! -name "STANDALONE_PROMPT.md" ! -name "USAGE_ACROSS_ALL_LLMS.md" ! -name "final-synthesized-*.md" ! -name "arena-*.md")
 
 if [ -z "$FOUND_FILES" ]; then
-  FOUND_FILES=$(find . -maxdepth 1 -name "*.md" | head -n 3)
+  FOUND_FILES=$(find . -maxdepth 1 -name "*.md" ! -name "README*.md")
 fi
 
 for file in $FOUND_FILES; do
@@ -35,11 +35,10 @@ done
 ## Objective
 Evaluate candidate `.md` documents through comprehensive multi-hat adversarial grilling—covering technical architecture, cybersecurity, FinOps economics, and production operations—iteratively refining the design via delta patches to produce the definitive best-of-breed document and saving it directly to a final `.md` file.
 
-> **⚡ TOKEN-EFFICIENCY PROTOCOL**:
-> 1. **No full draft re-rendering during intermediate rounds.**
-> 2. Use **Delta Patches (bulleted diffs/fixes)** during intermediate defense rounds.
-> 3. Emit the **Complete Final Document only once** in the final output section.
-> 4. Keep grilling vectors sharp (1-2 bullets per hat), high-density, and free of filler.
+> **⚡ ZERO-LOSS INGESTION & FIDELITY PROTOCOL**:
+> 1. **Zero-Loss Technical Ingestion**: "Synthesis" means **unifying and supersetting** the best technical details, NEVER summarizing, dropping, or truncating specific empirical tables, external URLs, licenses, taxonomies (A–L, ATLAS, OWASP), mathematical formulas, or mapping matrices from candidate documents. All distinct intelligence must be preserved in full detail.
+> 2. **Intermediate Token-Efficiency**: Use concise **Delta Patches (bulleted diffs/fixes)** during intermediate defense rounds (Hats 1–6). Do NOT re-render drafts between rounds.
+> 3. **Unabridged Disk Persistence**: The finalized document written to disk via `write_to_file` must be the **complete, fully exhaustive, production-grade specification** (no placeholders, no `TODO`s, no compressed tables).
 
 ---
 
@@ -69,7 +68,8 @@ For each round `r` from `1` to `TOTAL_ROUNDS`:
 
 ### Step 3: Final Best-of-Breed Consolidation & File Creation
 1. Compile all accumulated delta patches into the definitive, production-grade output markdown document.
-2. **Save the finalized document directly to disk as `final-synthesized-document.md` (or relevant topic name) and provide the file link.**
+2. **Write the complete, unabridged document to disk** as `final-synthesized-document.md` (or relevant topic name) using `write_to_file`. Ensure 100% preservation of all tables, formulas, and matrices.
+3. Provide the verified clickable file link in the final report.
 
 ---
 
@@ -86,7 +86,8 @@ For each round `r` from `1` to `TOTAL_ROUNDS`:
 - Complete transcript for `TOTAL_ROUNDS` rounds with all 6 Hat badges (🎩), concise attack vectors, champion delta patches, and scorecards.
 
 ## 3. The Definitive Best-of-Breed Document
-- The complete, fully refined, production-ready markdown document.
+- Provide the verified link to the unabridged file written to disk.
+- Include the complete, full text or detailed section-by-section specification ensuring zero-loss preservation of all technical tables.
 
 ## 4. Expert Evaluator Final Verdict & Evolution Delta
 - Final Arbiter Scorecard (`X/100`), evolution delta summary, and link to the saved final `.md` file.
