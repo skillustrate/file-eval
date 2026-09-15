@@ -110,6 +110,7 @@ To save costs and reduce "AI chatter," this suite uses:
 
 ```
 file-eval/
+├── LICENSE
 ├── README.md
 ├── USAGE_ACROSS_ALL_LLMS.md
 ├── STANDALONE_PROMPT.md
@@ -132,3 +133,7 @@ file-eval/
 ```
 
 ---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
